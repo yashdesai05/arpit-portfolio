@@ -1,0 +1,51 @@
+.option-wheel {
+  --ow-text-color: #71717a;
+  --ow-active-color: #ffffff;
+  --ow-font-size: 1.8rem;
+  --ow-inset: 30px;
+
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  outline: none;
+  padding-bottom: 1rem;
+}
+
+.option-wheel--dragging {
+  cursor: grabbing;
+}
+
+.option-wheel__item {
+  position: absolute;
+  top: 50%;
+  left: var(--ow-inset);
+  margin-top: -0.6em;
+  white-space: nowrap;
+  font-size: var(--ow-font-size);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  font-weight: 500;
+  transform-origin: left center;
+  cursor: pointer;
+  will-change: transform, opacity;
+  /* --ow-p goes 0 -> 1 as an option approaches the middle of the wheel */
+  color: color-mix(in srgb, var(--ow-active-color) calc(var(--ow-p, 0) * 100%), var(--ow-text-color));
+  transition: font-weight 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
+}
+
+.option-wheel--right .option-wheel__item {
+  left: auto;
+  right: var(--ow-inset);
+  transform-origin: right center;
+}
+
+.option-wheel__item--selected {
+  font-weight: 700;
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+}

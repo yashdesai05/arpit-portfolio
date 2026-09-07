@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #090a0f;
+  --bg-card: #0e1017;
+  --bg-surface: #131620;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(255, 255, 255, 0.2);
+  --text-muted: #94a3b8;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: #f1f5f9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+@layer utilities {
+  .font-serif-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  .font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-syne {
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* Editorial surface classes */
+  .surface-card {
+    background-color: #0e1017;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .surface-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth ambient breathing glow */
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.orb-pulse {
+  animation: ambientPulse 8s ease-in-out infinite;
+}
+
+/* Cyber Glitch Animation for Hero Title (Clean Jitter, Zero Blur Glow) */
+@keyframes cyberGlitchJitter1 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  16% {
+    transform: translate(-1.5px, 0.8px);
+  }
+  20% {
+    transform: translate(1.5px, -0.8px);
+  }
+  24% {
+    transform: translate(0);
+  }
+  62% {
+    transform: translate(1px, 0.5px);
+  }
+  66% {
+    transform: translate(0);
+  }
+  84% {
+    transform: translate(-1px, -0.5px);
+  }
+  88% {
+    transform: translate(0);
+  }
+}
+
+@keyframes cyberGlitchJitter2 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  22% {
+    transform: translate(1.5px, -0.8px);
+  }
+  26% {
+    transform: translate(-1.5px, 0.8px);
+  }
+  30% {
+    transform: translate(0);
+  }
+  68% {
+    transform: translate(-1px, 0.5px);
+  }
+  72% {
+    transform: translate(0);
+  }
+  90% {
+    transform: translate(1px, -0.5px);
+  }
+  94% {
+    transform: translate(0);
+  }
+}
+
+.glitch-blue,
+.glitch-pink {
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Arpit Hover: Top White, Center Light Blue, Bottom White (Zero Glow) */
+.glitch-blue:hover,
+.group:hover .glitch-blue {
+  background: linear-gradient(180deg, #ffffff 12%, #38bdf8 50%, #ffffff 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: none !important;
+  text-shadow: none !important;
+  animation: cyberGlitchJitter1 0.65s infinite linear;
+}
+
+/* Avasarmol Hover: Top White, Center Light Pink, Bottom White (Zero Glow) */
+.glitch-pink:hover,
+.group:hover .glitch-pink {
+  background: linear-gradient(180deg, #ffffff 12%, #f472b6 50%, #ffffff 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: none !important;
+  text-shadow: none !important;
+  animation: cyberGlitchJitter2 0.65s infinite linear;
+}
+
+/* Typewriter Cursor Blink */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+  color: #38bdf8;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Subtle Timeline Indicator */
+.timeline-stem {
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.1) 70%, 
+    rgba(255, 255, 255, 0.02) 100%);
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "polaris": {
+      "args": [
+        "serve"
+      ],
+      "command": "/home/yashdesai/.local/bin/polaris"
+    }
+  }
+}

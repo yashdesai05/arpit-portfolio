@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "codebase-memory-mcp": {
+      "command": "/home/yashdesai/.local/bin/codebase-memory-mcp",
+      "args": []
+    },
+    "polaris": {
+      "command": "/home/yashdesai/.local/bin/polaris",
+      "args": [
+        "serve"
+      ]
+    }
+  }
+}
